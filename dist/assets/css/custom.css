@@ -1,0 +1,465 @@
+/* ==========================================================================
+   Custom Styles - Portfolio Gaspar Cue
+   Uso de tokens del tema para compatibilidad total con modo claro y oscuro:
+   - var(--tc-theme-primary-2): Color de acento principal
+   - var(--tc-neutral-0): Texto y contraste neutro
+   - var(--tc-border-1): Bordes de contenedores y tarjetas
+   - var(--tc-bg-3): Fondo de tarjetas y secciones
+   ========================================================================== */
+
+/* 1. Accesibilidad y Navegación */
+html {
+  scroll-behavior: smooth;
+}
+
+section[id],
+div[id] {
+  scroll-margin-top: 110px;
+}
+
+:focus-visible {
+  outline: 2px solid var(--tc-theme-primary-2);
+  outline-offset: 3px;
+}
+
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 20px;
+  z-index: 10000;
+  padding: 10px 18px;
+  background-color: var(--tc-theme-primary-2);
+  color: #0d0d11;
+  font-weight: 700;
+  font-size: 0.95rem;
+  border-radius: 8px;
+  text-decoration: none;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+  transition: top 0.2s ease-in-out;
+}
+
+.skip-link:focus,
+.skip-link:focus-visible {
+  top: 20px;
+  color: #0d0d11;
+}
+
+/* 2. Bento Grid - Proyectos */
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 24px;
+}
+
+.bento-card {
+  background-color: var(--tc-bg-3);
+  border: 1px solid var(--tc-border-1);
+  border-radius: 16px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1),
+              box-shadow 0.35s cubic-bezier(0.25, 1, 0.5, 1),
+              border-color 0.35s ease;
+  position: relative;
+}
+
+.bento-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.28);
+  border-color: var(--tc-theme-primary-2);
+}
+
+/* Primera tarjeta destacada: ocupa las 6 columnas completas */
+.bento-card-featured {
+  grid-column: span 6;
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  align-items: center;
+}
+
+/* Las otras 3 tarjetas ocupan 2 columnas cada una */
+.bento-card-sub {
+  grid-column: span 2;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Imagen y zoom suave */
+.bento-card__img-wrap {
+  position: relative;
+  overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bento-card-featured .bento-card__img-wrap {
+  height: 100%;
+  min-height: 320px;
+}
+
+.bento-card-sub .bento-card__img-wrap {
+  height: 220px;
+}
+
+.bento-card__img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.bento-card:hover .bento-card__img-wrap img {
+  transform: scale(1.05);
+}
+
+/* Contenido de la tarjeta */
+.bento-card__content {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-grow: 1;
+}
+
+.bento-card-featured .bento-card__content {
+  padding: 36px 32px;
+}
+
+.bento-card__tag {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--tc-theme-primary-2);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 8px;
+}
+
+.bento-card__title {
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: var(--tc-neutral-0);
+  line-height: 1.3;
+}
+
+.bento-card-featured .bento-card__title {
+  font-size: 1.75rem;
+}
+
+.bento-card__desc {
+  font-size: 0.95rem;
+  color: var(--tc-neutral-300, #a0a0a5);
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+/* 3. Sección Contacto */
+.section-contact-card {
+  background-color: var(--tc-bg-3);
+  border: 1px solid var(--tc-border-1);
+  border-radius: 16px;
+}
+
+.btn-contact {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  border: 1px solid var(--tc-border-1);
+  background-color: rgba(255, 255, 255, 0.03);
+  color: var(--tc-neutral-0);
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.btn-contact:hover {
+  background-color: var(--tc-theme-primary-2);
+  border-color: var(--tc-theme-primary-2);
+  color: #ffffff !important;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(98, 169, 43, 0.25);
+}
+
+.btn-contact:hover i {
+  color: #ffffff !important;
+}
+
+.btn-contact-primary {
+  background-color: var(--tc-theme-primary-2);
+  border-color: var(--tc-theme-primary-2);
+  color: #ffffff !important;
+}
+
+.btn-contact-primary i {
+  color: #ffffff !important;
+}
+
+.btn-contact-primary:hover {
+  filter: brightness(1.1);
+  color: #ffffff !important;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(98, 169, 43, 0.35);
+}
+
+.btn-contact-primary:hover i {
+  color: #ffffff !important;
+}
+
+/* 4. Responsive */
+@media (max-width: 991px) {
+  .bento-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .bento-card-featured {
+    grid-column: span 2;
+    grid-template-columns: 1fr;
+  }
+
+  .bento-card-featured .bento-card__img-wrap {
+    min-height: 260px;
+    height: 260px;
+  }
+
+  .bento-card-sub {
+    grid-column: span 1;
+  }
+}
+
+@media (max-width: 767px) {
+  .bento-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .bento-card-featured,
+  .bento-card-sub {
+    grid-column: span 1;
+  }
+
+  .bento-card-sub .bento-card__img-wrap {
+    height: 200px;
+  }
+
+  .bento-card__content {
+    padding: 20px;
+  }
+
+  .bento-card-featured .bento-card__content {
+    padding: 24px 20px;
+  }
+}
+
+/* 5. Línea de tiempo de experiencia y Certificados en columnas */
+.experience-timeline {
+  border-left: 2px solid var(--tc-border-1);
+  padding-left: 1rem;
+}
+
+.timeline-role-item {
+  position: relative;
+  margin-bottom: 0.75rem;
+}
+
+.timeline-role-item:last-child {
+  margin-bottom: 0;
+}
+
+.timeline-role-item::before {
+  content: "";
+  position: absolute;
+  left: calc(-1rem - 5px);
+  top: 7px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--tc-theme-primary-2);
+}
+
+.cert-list {
+  columns: 2;
+  column-gap: 2.5rem;
+  list-style: none;
+  padding-left: 0;
+}
+
+.cert-item {
+  break-inside: avoid;
+  page-break-inside: avoid;
+  margin-bottom: 1.25rem;
+}
+
+@media (max-width: 767px) {
+  .cert-list {
+    columns: 1;
+  }
+}
+
+/* 6. Bento Grid de Habilidades (Senior UX Stack) */
+.skills-bento-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 20px;
+}
+
+.skills-bento-card {
+  background-color: var(--tc-bg-3);
+  border: 1px solid var(--tc-border-1);
+  border-radius: 14px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+}
+
+.skills-bento-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--tc-theme-primary-2);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.28);
+}
+
+.skills-card--backend {
+  grid-column: span 7;
+}
+
+.skills-card--db {
+  grid-column: span 5;
+}
+
+.skills-card--testing {
+  grid-column: span 4;
+}
+
+.skills-card--frontend {
+  grid-column: span 4;
+}
+
+.skills-card--infra {
+  grid-column: span 4;
+}
+
+.skills-card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.skills-card__title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--tc-neutral-0);
+}
+
+.skill-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 13px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--tc-border-1);
+  border-radius: 20px;
+  font-size: 0.86rem;
+  font-weight: 500;
+  color: var(--tc-neutral-0);
+  transition: all 0.25s ease;
+  line-height: 1.2;
+}
+
+.skill-chip:hover {
+  background: rgba(168, 255, 83, 0.12);
+  border-color: var(--tc-theme-primary-2);
+  color: var(--tc-neutral-0);
+  transform: translateY(-2px);
+}
+
+.skill-chip i {
+  font-size: 1.15rem;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.skill-chip__icon {
+  width: 17px;
+  height: 17px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.badge-specialty {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 3px 9px;
+  border-radius: 20px;
+  background: rgba(168, 255, 83, 0.12);
+  color: var(--tc-theme-primary-2);
+  border: 1px solid var(--tc-theme-primary-2);
+}
+
+@media (max-width: 991px) {
+  .skills-card--backend,
+  .skills-card--db {
+    grid-column: span 6;
+  }
+
+  .skills-card--testing,
+  .skills-card--frontend,
+  .skills-card--infra {
+    grid-column: span 12;
+  }
+}
+
+@media (max-width: 767px) {
+  .skills-bento-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .skills-card--backend,
+  .skills-card--db,
+  .skills-card--testing,
+  .skills-card--frontend,
+  .skills-card--infra {
+    grid-column: span 1;
+  }
+
+  .skills-bento-card {
+    padding: 18px;
+  }
+
+  .skill-chip {
+    padding: 6px 11px;
+    font-size: 0.82rem;
+  }
+}
+
+/* 7. Accesibilidad: Reducción de Movimiento */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
